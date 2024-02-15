@@ -1,0 +1,5 @@
+*.hi
+*.o
+build/
+.idea
+dist-newstyle/
