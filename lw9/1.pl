@@ -23,4 +23,33 @@ grandmother(X, Y):-
 % ?- grandmother(X, bob).
 
 grandchild(X, Y):-
-    parent(Y, Z), parent(Z, X)
+    parent(Y, Z), parent(Z, X).
+
+different(X, Y):- X \= Y.
+
+sister(X, Y):-
+    parent(Z, X), parent(Z, Y), female(X), different(X, Y).
+
+aunt(X, Y):-
+    sister(X, Z), parent(Z, Y).
+
+cousin(X, Y):-
+    parent(B, X), parent(A, B),
+    parent(A, C), parent(C, Y).
+
+likes(ellen, reading).
+likes(john, computers).
+likes(john, badminton).
+likes(john, photo).
+likes(john, reading).
+likes(leonard, badminton).
+likes(eric, swimming).
+likes(eric, reading).
+likes(eric, chess).
+likes(paul, swimming).
+
+hasFourHobbies(X):-
+     aggregate_all(count, likes(X, _), Count),
+     Count =:= 4 .
+
+isHobbyOf(Hobby, X) :- likes(X, Hobby).
