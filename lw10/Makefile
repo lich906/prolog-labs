@@ -3,9 +3,9 @@ CC=swipl
 .PHONY: all
 all: build
 
-build: 1.pl 2.pl
+build: main.pl
 	mkdir -p build/
-	$(CC) -o build/1 -c 1.pl
+	$(CC) -o build/main -c main.pl
 
 clean:
 	rm -rf build/
